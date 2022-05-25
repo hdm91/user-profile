@@ -1,0 +1,68 @@
+@import "../../styles/global.scss";
+
+$block-selector: "user-profile";
+
+.#{$cls-prefix}-#{$block-selector} {
+  font-size: 40px;
+  width: 300px;
+  height: 320px;
+  box-shadow: 0 4px 4px 0px #00000018;
+  border-radius: 8px;
+  position: relative;
+  border: 1px solid #fff;
+  transition: background-color 1s;
+  padding: 16px;
+
+  &_ {
+    &loading {
+      background-color: #fff;
+    }
+  }
+
+  &__ {
+    &content-wrapper {
+      opacity: 1;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+      height: 100%;
+      transition: opacity 1s;
+
+      &_ {
+        &loading {
+          opacity: 0;
+        }
+      }
+    }
+
+    &full-name {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+
+    &image {
+      width: 160px;
+      height: 160px;
+      border-radius: 100px;
+      border: 1px solid #ddd;
+
+      &-wrapper {
+        width: 160px;
+        height: 160px;
+      }
+    }
+
+    &country {
+      font-size: 18px;
+
+      & > img {
+        width: 24px;
+        margin-right: 8px;
+        vertical-align: sub;
+      }
+    }
+  }
+}

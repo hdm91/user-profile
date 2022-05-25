@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { UserList } from "./components/User/UserList";
+import { AxiosEx } from "./httpRequest";
+import { ApiResult, User } from "./models";
+import { Layout, UserProfile } from "./components";
+import { Tabs } from "antd";
+import { UserProfileContainer } from "./components/User/UserProfileContainer";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+import "./App.scss";
+
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { refetchOnWindowFocus: false } },
+});
+
+const { TabPane } = Tabs;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <QueryClientProvider client={queryClient}>
+      <Layout>
+        <Tabs
+          destroyInactiveTabPane={true}
+          defaultActiveKey="singleUser"
+          centered
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <TabPane tab="Single User" key="singleUser">
+            <UserProfileContainer />
+          </TabPane>
+          <TabPane tab="User List" key="userList">
+            <UserList />
+          </TabPane>
+        </Tabs>
+      </Layout>
+    </QueryClientProvider>
   );
 }
 

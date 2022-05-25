@@ -1,0 +1,9 @@
+@import "../../styles/global.scss";
+
+$block-selector: "user-profile-container";
+
+.#{$cls-prefix}-#{$block-selector} {
+  padding-top: 16px;
+  display: flex;
+  justify-content: center;
+}
